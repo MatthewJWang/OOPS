@@ -30,7 +30,6 @@ typedef enum oBool
 #define WSCALE 1.30612244898f
 #define PI              (3.14159265358979f)
 #define TWO_PI          (2 * PI)
-#define E 2.71828183f
 
 #define VSF             1.0e-38f
 

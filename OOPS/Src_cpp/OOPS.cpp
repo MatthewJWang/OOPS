@@ -114,6 +114,10 @@ void OOPSSetSampleRate(float sampleRate)
 #if N_COMPRESSOR
         for (int i = 0; i < oops.registryIndex[T_COMPRESSOR]; i++)         OOPSSampleRateChanged(tCompressorRegistry[i]);
 #endif
+    
+#if N_LOCKHARTWAVEFOLDER
+    for (int i = 0; i < oops.registryIndex[T_LOCKHARTWAVEFOLDER]; i++)     OOPSSampleRateChanged(tLockhartWavefolderRegistry[i]);
+#endif
 }
 
 float OOPSGetSampleRate()

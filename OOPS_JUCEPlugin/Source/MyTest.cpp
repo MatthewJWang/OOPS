@@ -40,6 +40,7 @@ void    OOPSTest_init            (float sampleRate, int samplesPerBlock)
     env = tEnvInit(windowSize, hopSize);
     
     osc = tCycleInit();
+
     folder = tLockhartWavefolderInit();
     
     hp = tHighpassInit(40.0f);
@@ -47,6 +48,9 @@ void    OOPSTest_init            (float sampleRate, int samplesPerBlock)
     tSOLAD_setPitchFactor(sola, desPitchRatio);
     
     setTimeConstant(timeConstant);
+    
+    setSliderValue("s1", 0.2f);
+    setSliderValue("s2", 0.1f);
 }
 
 
@@ -90,7 +94,7 @@ float   OOPSTest_tick            (float input)
 {
     float sample = 0;
     
-    sample = tCycleTick(osc);
+    //sample = tCycleTick(osc);
     //sample += tLockhartWavefolderTick(folder, samp);
     
     
@@ -113,17 +117,19 @@ void    OOPSTest_block           (float* inL, float* inR, float* outL, float* ou
 {
     float s1 = getSliderValue("s1");
     float s2 = getSliderValue("s2");
-    float  period;
-
+    //float  period;
+    
+    /*
     for (int cc=0; cc < numSamples; cc++)
     {
         inBuffer[cur_read_block*numSamples+cc] = inL[cc];
-    }
+    } */
     
     //tEnvProcessBlock(env, &inBuffer[cur_read_block*numSamples]);
     //attackDetect();
 
     // tSNAC period detection
+    /*
 #if SNAC
     tSNAC_ioSamples(snac, &inBuffer[cur_read_block*numSamples], &outBuffer[cur_write_block*numSamples], numSamples);
 
@@ -146,22 +152,26 @@ void    OOPSTest_block           (float* inL, float* inR, float* outL, float* ou
     
     //  tSOLAD pshift works
     tSOLAD_ioSamples(sola, &inBuffer[cur_read_block*numSamples], &outBuffer[cur_write_block*numSamples], numSamples);
-#endif
+#endif */
     
-
+    float samp;
+    tCycleSetFreq(osc, (s1 * 800.0f + 100.0f));
     for (int cc=0; cc < numSamples; cc++)
     {
-        outL[cc] = tHighpassTick(hp,outBuffer[cur_write_block*numSamples+cc]);
+        //outL[cc] = (s2 * 2.0f) * tSawtoothTick(osc);
+        samp = (s2 * 10.0f) * tCycleTick(osc);
+        outL[cc] = tLockhartWavefolderTick(folder, samp);
         outR[cc] = outL[cc];
+        //DBG(outL[cc]);
     }
-    
+    /*
     cur_read_block++;
     if (cur_read_block >= TOTAL_BUFFERS)
         cur_read_block=0;
-    
+
     cur_write_block++;
     if (cur_write_block >= TOTAL_BUFFERS)
-        cur_write_block=0;
+        cur_write_block=0; */
 }
 
 

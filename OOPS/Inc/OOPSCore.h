@@ -704,6 +704,7 @@ typedef struct _tAtkDtk
 #define LOCKHART_A 2.0f*LOCKHART_RL/LOCKHART_R
 #define LOCKHART_B (LOCKHART_R+2.0f*LOCKHART_RL)/(LOCKHART_VT*LOCKHART_R)
 #define LOCKHART_D (LOCKHART_RL*LOCKHART_Is)/LOCKHART_VT
+#define VT_DIV_B LOCKHART_VT/LOCKHART_B
 
 typedef struct _tLockhartWavefolder
 {
