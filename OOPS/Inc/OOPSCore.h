@@ -696,6 +696,24 @@ typedef struct _tAtkDtk
     float threshold;
 } tAtkDtk;
 
+#define THRESH 10e-10f
+#define LOCKHART_RL 7.5e3f
+#define LOCKHART_R 15e3f
+#define LOCKHART_VT 26e-3f
+#define LOCKHART_Is 10e-16f
+#define LOCKHART_A 2.0f*LOCKHART_RL/LOCKHART_R
+#define LOCKHART_B (LOCKHART_R+2.0f*LOCKHART_RL)/(LOCKHART_VT*LOCKHART_R)
+#define LOCKHART_D (LOCKHART_RL*LOCKHART_Is)/LOCKHART_VT
+
+typedef struct _tLockhartWavefolder
+{
+    float Ln1;
+    float Fn1;
+    float xn1;
+    
+    void (*sampleRateChanged)(struct _tLockhartWavefolder *self);
+} tLockhartWavefolder;
+
 #define MAXOVERLAP 32
 #define INITVSTAKEN 64
 
@@ -735,6 +753,7 @@ void     tNeuronSampleRateChanged(tNeuron* n);
 void     tCompressorSampleRateChanged(tCompressor* n);
 void     tButterworthSampleRateChanged(tButterworth* n);
 
+void     tTalkboxSampleRateChanged(tVocoder* n);
 void     tVocoderSampleRateChanged(tVocoder* n);
 
 void     t808SnareSampleRateChanged(t808Snare* n);
@@ -743,6 +762,8 @@ void     t808CowbellSampleRateChanged(t808Cowbell* n);
 
 void     tSOLADSampleRateChanged(tSOLAD* n);
 void     tSNACSampleRateChanged(tSNAC* n);
+
+void     tLockhartWavefolderSampleRateChanged(tLockhartWavefolder* n);
 
 typedef enum OOPSRegistryIndex
 {
@@ -786,6 +807,7 @@ typedef enum OOPSRegistryIndex
     T_SOLAD,
     T_SNAC,
     T_ATKDTK,
+    T_LOCKHARTWAVEFOLDER,
     T_ENV,
     T_INDEXCNT
 }OOPSRegistryIndex;
@@ -943,6 +965,10 @@ typedef struct _OOPS
     
 #if N_ATKDTK
     tAtkDtk            tAtkDtkRegistry   [N_ATKDTK];
+#endif
+    
+#if N_LOCKHARTWAVEFOLDER
+    tLockhartWavefolder tLockhartWavefolderRegistry [N_LOCKHARTWAVEFOLDER];
 #endif
     
 #if N_808SNARE

@@ -19,6 +19,7 @@ tEnv* env;
 tHighpass* hp;
 
 tCycle* osc;
+tLockhartWavefolder* folder;
 
 
 

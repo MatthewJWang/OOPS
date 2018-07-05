@@ -30,6 +30,7 @@ typedef enum oBool
 #define WSCALE 1.30612244898f
 #define PI              (3.14159265358979f)
 #define TWO_PI          (2 * PI)
+#define E 2.71828183f
 
 #define VSF             1.0e-38f
 
@@ -131,9 +132,5 @@ static inline float fastabs(float f)
     alias.ui &= 0x7fffffff;
     return alias.f;
 }
-
-
-
-
 
 #endif  // OOPSMATH_H_INCLUDED

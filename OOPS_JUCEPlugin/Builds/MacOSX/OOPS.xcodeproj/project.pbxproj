@@ -231,7 +231,7 @@
 					EF0D1C3CCA9B2F9EFE252D45,
 					0F5C4ACEEB42E82E3BD1B369,
 					A5FAC1D53794586CC6300FD3,
-					AAAFB2C4D7A5AC36D3654C9E, ); name = "JUCE Modules"; sourceTree = "<group>"; };
+					AAAFB2C4D7A5AC36D3654C9E, ); name = "Juce Modules"; sourceTree = "<group>"; };
 		D59B989FA35A6F4A3D32BC09 = {isa = PBXGroup; children = (
 					7A3B8E19E000A7A4B7DD7C44,
 					5EF0F933DB9358ADBAF2FC99,
@@ -255,7 +255,7 @@
 					9E8F106C4DCBD55B48E54D99,
 					3EB084EFCDCB5A6345AB3DD3,
 					8B9613C966CC375CEE8C1ED5,
-					3B7560A2848C7A5E6CC6C7BE, ); name = "JUCE Library Code"; sourceTree = "<group>"; };
+					3B7560A2848C7A5E6CC6C7BE, ); name = "Juce Library Code"; sourceTree = "<group>"; };
 		86DD9A9EBDED16F4D34F04F0 = {isa = PBXGroup; children = (
 					11B6263E646D0A02FE30B6D4,
 					9AD174A063DE9AD9B7F0A4EE,
@@ -364,7 +364,6 @@
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_STYLE = Bundle;
-				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_LDFLAGS = "-bundle -lOOPS";
@@ -442,7 +441,6 @@
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_STYLE = Bundle;
-				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_LDFLAGS = "-bundle -lOOPS";
@@ -509,7 +507,6 @@
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../../JUCE/modules", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INFOPLIST_FILE = Info-Standalone_Plugin.plist;
 				INFOPLIST_PREPROCESS = NO;
-				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_LDFLAGS = "-lOOPS";
@@ -573,7 +570,6 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../../JUCE/modules", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrmulshine.OOPS;
@@ -792,7 +788,7 @@
 					51BAB5C6EE36EB0C53881D7D, ); runOnlyForDeploymentPostprocessing = 0; };
 		5D7C456B0368AA9533D8911C = {isa = PBXNativeTarget; buildConfigurationList = 1930D53971389744152980FA; buildPhases = (
 					34EF69715757D8C9AE5B2BD8, ); buildRules = ( ); dependencies = (  ); name = "OOPS - Shared Code"; productName = OOPS; productReference = A810512FE4F6CB3D86365DEA; productType = "com.apple.product-type.library.static"; };
-		6DFDA17080A9F446794D5D4B = {isa = PBXProject; buildConfigurationList = C50F7A3399675EF31D798A62; attributes = { LastUpgradeCheck = 0830; ORGANIZATIONNAME = "mrmulshine"; TargetAttributes = { 1322946847D323D413120CC1 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };AF786E026C2C4A62F15F5648 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };BAFDCAF7A363EFF0EAB70B96 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };FD2A7A705EDA702DB6C64BF9 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };5D7C456B0368AA9533D8911C = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; }; compatibilityVersion = "Xcode 3.2"; hasScannedForEncodings = 0; mainGroup = E8133F6335F35E4D8F81AE05; projectDirPath = ""; projectRoot = ""; targets = (1322946847D323D413120CC1, AF786E026C2C4A62F15F5648, BAFDCAF7A363EFF0EAB70B96, FD2A7A705EDA702DB6C64BF9, 5D7C456B0368AA9533D8911C); };
+		6DFDA17080A9F446794D5D4B = {isa = PBXProject; buildConfigurationList = C50F7A3399675EF31D798A62; attributes = { LastUpgradeCheck = 0830; TargetAttributes = { 1322946847D323D413120CC1 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };AF786E026C2C4A62F15F5648 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };BAFDCAF7A363EFF0EAB70B96 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };FD2A7A705EDA702DB6C64BF9 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };5D7C456B0368AA9533D8911C = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; }; compatibilityVersion = "Xcode 3.2"; hasScannedForEncodings = 0; mainGroup = E8133F6335F35E4D8F81AE05; projectDirPath = ""; projectRoot = ""; targets = (1322946847D323D413120CC1, AF786E026C2C4A62F15F5648, BAFDCAF7A363EFF0EAB70B96, FD2A7A705EDA702DB6C64BF9, 5D7C456B0368AA9533D8911C); };
 	};
 	rootObject = 6DFDA17080A9F446794D5D4B;
 }

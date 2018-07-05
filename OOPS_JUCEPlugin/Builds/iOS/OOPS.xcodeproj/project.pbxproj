@@ -20,7 +20,6 @@
 		3756FED206F6D92362F162B0 = {isa = PBXBuildFile; fileRef = 37CE5ED9AE70FABA5701E06C; };
 		55C1FF93B206F9D09EDA8877 = {isa = PBXBuildFile; fileRef = 67B342588EE92B2CD7BB4E34; };
 		FBE5F20CE3A3D0B9192CD394 = {isa = PBXBuildFile; fileRef = 883EFA6E6FA886473E385AD7; };
-		E58157BF65578DB6823AB149 = {isa = PBXBuildFile; fileRef = 7A07D33DC376AD68AEA4C4FF; };
 		7B436A9BA125B02180B750AE = {isa = PBXBuildFile; fileRef = 843F5E3EDB76A6A7ED88A536; };
 		FCF92E1A93F7FB7117DC56E4 = {isa = PBXBuildFile; fileRef = A02CE6774629795DA35BE4FB; };
 		6773B2DF5D085D75E75BB601 = {isa = PBXBuildFile; fileRef = 9B20EF2878EA8500C0196ADD; };
@@ -102,7 +101,6 @@
 		770DC48EAB2B94D1EA448F11 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OOPS.h; path = ../../../OOPS/Inc/OOPS.h; sourceTree = "SOURCE_ROOT"; };
 		77DADB3105A3CFB64BE87200 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		786E7B03A67E88A5520FA85A = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_audio_formats"; path = "../../../../JUCE/modules/juce_audio_formats"; sourceTree = "SOURCE_ROOT"; };
-		7A07D33DC376AD68AEA4C4FF = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		7A3B8E19E000A7A4B7DD7C44 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../JuceLibraryCode/AppConfig.h; sourceTree = "SOURCE_ROOT"; };
 		7D88A02E53C22BA71DD3798A = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Standalone_Plugin.plist"; path = "Info-Standalone_Plugin.plist"; sourceTree = "SOURCE_ROOT"; };
 		843F5E3EDB76A6A7ED88A536 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -216,7 +214,7 @@
 					EF0D1C3CCA9B2F9EFE252D45,
 					0F5C4ACEEB42E82E3BD1B369,
 					A5FAC1D53794586CC6300FD3,
-					AAAFB2C4D7A5AC36D3654C9E, ); name = "JUCE Modules"; sourceTree = "<group>"; };
+					AAAFB2C4D7A5AC36D3654C9E, ); name = "Juce Modules"; sourceTree = "<group>"; };
 		D59B989FA35A6F4A3D32BC09 = {isa = PBXGroup; children = (
 					7A3B8E19E000A7A4B7DD7C44,
 					5EF0F933DB9358ADBAF2FC99,
@@ -236,7 +234,7 @@
 					9E8F106C4DCBD55B48E54D99,
 					3EB084EFCDCB5A6345AB3DD3,
 					8B9613C966CC375CEE8C1ED5,
-					3B7560A2848C7A5E6CC6C7BE, ); name = "JUCE Library Code"; sourceTree = "<group>"; };
+					3B7560A2848C7A5E6CC6C7BE, ); name = "Juce Library Code"; sourceTree = "<group>"; };
 		86DD9A9EBDED16F4D34F04F0 = {isa = PBXGroup; children = (
 					7D88A02E53C22BA71DD3798A,
 					C873E3AFC2F0FE9D5EA525FB, ); name = Resources; sourceTree = "<group>"; };
@@ -253,7 +251,6 @@
 					37CE5ED9AE70FABA5701E06C,
 					67B342588EE92B2CD7BB4E34,
 					883EFA6E6FA886473E385AD7,
-					7A07D33DC376AD68AEA4C4FF,
 					843F5E3EDB76A6A7ED88A536,
 					A02CE6774629795DA35BE4FB,
 					9B20EF2878EA8500C0196ADD, ); name = Frameworks; sourceTree = "<group>"; };
@@ -268,7 +265,6 @@
 					EBE9804C0E1E03B79662C5DB,
 					9B58BB6F362098E6C2CBE45A, ); name = Source; sourceTree = "<group>"; };
 		407663599ACA81FAADD553BF = {isa = XCBuildConfiguration; buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
@@ -276,7 +272,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = QY96HSP2FJ;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -296,10 +291,8 @@
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../../JUCE/modules", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				OTHER_LDFLAGS = "-lOOPS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrmulshine.OOPS;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = NO; }; name = Debug; };
 		E90B8D921EFF8A1CA09FA55C = {isa = XCBuildConfiguration; buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
@@ -307,7 +300,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = QY96HSP2FJ;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -326,13 +318,10 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../../JUCE/modules", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
-				LLVM_LTO = YES;
 				OTHER_LDFLAGS = "-lOOPS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrmulshine.OOPS;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = NO; }; name = Release; };
 		4F44D44F22881DC34AE6B961 = {isa = XCBuildConfiguration; buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
@@ -340,7 +329,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = QY96HSP2FJ;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -362,10 +350,8 @@
 				INFOPLIST_PREPROCESS = NO;
 				OTHER_LDFLAGS = "-lOOPS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrmulshine.OOPS;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = NO; }; name = Debug; };
 		A9263BBEB722FFC765A449CA = {isa = XCBuildConfiguration; buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
@@ -373,7 +359,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = QY96HSP2FJ;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -394,13 +379,10 @@
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../../JUCE/modules", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INFOPLIST_FILE = Info-Standalone_Plugin.plist;
 				INFOPLIST_PREPROCESS = NO;
-				LLVM_LTO = YES;
 				OTHER_LDFLAGS = "-lOOPS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrmulshine.OOPS;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = NO; }; name = Release; };
 		BC8ECF0FF637F7311CCECF55 = {isa = XCBuildConfiguration; buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
@@ -408,7 +390,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = QY96HSP2FJ;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -429,10 +410,8 @@
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../../JUCE/modules", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INSTALL_PATH = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrmulshine.OOPS;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = NO; }; name = Debug; };
 		2FBCC90B16F562BBCBFE564E = {isa = XCBuildConfiguration; buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
@@ -440,7 +419,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = QY96HSP2FJ;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -461,9 +439,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../../JUCE/modules", "../../../../JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INSTALL_PATH = "@executable_path/Frameworks";
-				LLVM_LTO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrmulshine.OOPS;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = NO; }; name = Release; };
 		C858F428D6683958D73B0C79 = {isa = XCBuildConfiguration; buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -578,7 +554,6 @@
 					3756FED206F6D92362F162B0,
 					55C1FF93B206F9D09EDA8877,
 					FBE5F20CE3A3D0B9192CD394,
-					E58157BF65578DB6823AB149,
 					7B436A9BA125B02180B750AE,
 					FCF92E1A93F7FB7117DC56E4,
 					6773B2DF5D085D75E75BB601, ); runOnlyForDeploymentPostprocessing = 0; };
@@ -625,7 +600,7 @@
 					51BAB5C6EE36EB0C53881D7D, ); runOnlyForDeploymentPostprocessing = 0; };
 		5D7C456B0368AA9533D8911C = {isa = PBXNativeTarget; buildConfigurationList = 1930D53971389744152980FA; buildPhases = (
 					34EF69715757D8C9AE5B2BD8, ); buildRules = ( ); dependencies = (  ); name = "OOPS - Shared Code"; productName = OOPS; productReference = A810512FE4F6CB3D86365DEA; productType = "com.apple.product-type.library.static"; };
-		6DFDA17080A9F446794D5D4B = {isa = PBXProject; buildConfigurationList = C50F7A3399675EF31D798A62; attributes = { LastUpgradeCheck = 0830; ORGANIZATIONNAME = "mrmulshine"; TargetAttributes = { 1322946847D323D413120CC1 = { DevelopmentTeam = QY96HSP2FJ; ProvisioningStyle = Automatic; SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };FD2A7A705EDA702DB6C64BF9 = { DevelopmentTeam = QY96HSP2FJ; ProvisioningStyle = Automatic; SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };5D7C456B0368AA9533D8911C = { DevelopmentTeam = QY96HSP2FJ; ProvisioningStyle = Automatic; SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; }; compatibilityVersion = "Xcode 3.2"; hasScannedForEncodings = 0; mainGroup = E8133F6335F35E4D8F81AE05; projectDirPath = ""; projectRoot = ""; targets = (1322946847D323D413120CC1, FD2A7A705EDA702DB6C64BF9, 5D7C456B0368AA9533D8911C); };
+		6DFDA17080A9F446794D5D4B = {isa = PBXProject; buildConfigurationList = C50F7A3399675EF31D798A62; attributes = { LastUpgradeCheck = 0830; TargetAttributes = { 1322946847D323D413120CC1 = { DevelopmentTeam = QY96HSP2FJ; SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };FD2A7A705EDA702DB6C64BF9 = { DevelopmentTeam = QY96HSP2FJ; SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };5D7C456B0368AA9533D8911C = { DevelopmentTeam = QY96HSP2FJ; SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; }; compatibilityVersion = "Xcode 3.2"; hasScannedForEncodings = 0; mainGroup = E8133F6335F35E4D8F81AE05; projectDirPath = ""; projectRoot = ""; targets = (1322946847D323D413120CC1, FD2A7A705EDA702DB6C64BF9, 5D7C456B0368AA9533D8911C); };
 	};
 	rootObject = 6DFDA17080A9F446794D5D4B;
 }

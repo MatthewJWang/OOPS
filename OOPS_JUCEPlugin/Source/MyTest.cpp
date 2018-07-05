@@ -30,7 +30,6 @@ static void setTimeConstant(float tc)
     timeConstant = tc;
     radius = exp(-1000.0f * hopSize * oops.invSampleRate / timeConstant);
 }
-
 void    OOPSTest_init            (float sampleRate, int samplesPerBlock)
 {
     OOPSInit(sampleRate, samplesPerBlock, &randomNumberGenerator);
@@ -40,12 +39,16 @@ void    OOPSTest_init            (float sampleRate, int samplesPerBlock)
     sola = tSOLAD_init();
     env = tEnvInit(windowSize, hopSize);
     
+    osc = tCycleInit();
+    folder = tLockhartWavefolderInit();
+    
     hp = tHighpassInit(40.0f);
     
     tSOLAD_setPitchFactor(sola, desPitchRatio);
     
     setTimeConstant(timeConstant);
 }
+
 
 
 
@@ -87,6 +90,10 @@ float   OOPSTest_tick            (float input)
 {
     float sample = 0;
     
+    sample = tCycleTick(osc);
+    //sample += tLockhartWavefolderTick(folder, samp);
+    
+    
     return sample;
 }
 
@@ -113,8 +120,8 @@ void    OOPSTest_block           (float* inL, float* inR, float* outL, float* ou
         inBuffer[cur_read_block*numSamples+cc] = inL[cc];
     }
     
-    tEnvProcessBlock(env, &inBuffer[cur_read_block*numSamples]);
-    attackDetect();
+    //tEnvProcessBlock(env, &inBuffer[cur_read_block*numSamples]);
+    //attackDetect();
 
     // tSNAC period detection
 #if SNAC

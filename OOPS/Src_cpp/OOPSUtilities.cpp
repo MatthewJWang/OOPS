@@ -2150,3 +2150,75 @@ static void atkdtk_envelope(tAtkDtk *a, float *in)
 }
 #endif //N_ATKDTK
 
+#if N_LOCKHARTWAVEFOLDER
+
+tLockhartWavefolder* tLockhartWavefolderInit(void)
+{
+    tLockhartWavefolder *w = &oops.tLockhartWavefolderRegistry[oops.registryIndex[T_LOCKHARTWAVEFOLDER]++];
+    
+    w->Ln1 = 0;
+    w->Fn1 = 0;
+    w->xn1 = 0;
+    
+    return w;
+}
+
+float tLockhartWavefolderLambert(float x, float ln)
+{
+    float w = ln;
+    float expw, p, r, s, err;
+    
+    for (int i = 0; i < 1000; i++)
+    {
+        expw = powf(E, w);
+        
+        p = w*expw - x;
+        r = (w+1)*expw;
+        s = (w*2)/(2*(w+1));
+        err = (p/(r-(p*s)));
+        
+        if (fabsf(err) < THRESH) break;
+        
+        w = w - err;
+    }
+    
+    return w;
+}
+
+float tLockhartWavefolderTick(tLockhartWavefolder* const w, float samp)
+{
+    int l;
+    float u, Ln, Fn, xn, o;
+    
+    // Compute Antiderivative
+    if (samp > 0) l = 1;
+    else if (samp < 0) l = -1;
+    else l = 0;
+    u = LOCKHART_D * powf(E, l*LOCKHART_B*samp);
+    Ln = tLockhartWavefolderLambert(u, w->Ln1);
+    Fn = (0.5*LOCKHART_VT/LOCKHART_B) * (Ln*(Ln + 2)) - 0.5*LOCKHART_A*samp*samp;
+    
+    // Check for ill-conditioning
+    if (fabsf(samp-w->xn1)<THRESH)
+    {
+        // Compute Averaged Wavefolder Output
+        xn = 0.5*(samp+w->xn1);
+        u = LOCKHART_D*pow(E, l*LOCKHART_B*xn);
+        Ln = tLockhartWavefolderLambert(u, w->Ln1);
+        o = l*LOCKHART_VT*Ln - LOCKHART_A*xn;
+    }
+    else
+    {
+        // Apply AA Form
+        o = (Fn - w->Fn1)/(samp - w->xn1);
+    }
+    
+    // Update States
+    w->Ln1 = Ln;
+    w->Fn1 = Fn;
+    w->xn1 = samp;
+    
+    return o;
+}
+
+#endif
