@@ -25,6 +25,9 @@ int hopSize = 64, windowSize = 64;
 float max, timeConstant = 100, envout, deltamax, radius;
 /**********************************************/
 
+int count  = 0;
+
+
 static void setTimeConstant(float tc)
 {
     timeConstant = tc;
@@ -88,7 +91,6 @@ void attackDetect(void)
     
 }
 
-int count = 0;
 
 float   OOPSTest_tick            (float input)
 {
@@ -153,16 +155,16 @@ void    OOPSTest_block           (float* inL, float* inR, float* outL, float* ou
     //  tSOLAD pshift works
     tSOLAD_ioSamples(sola, &inBuffer[cur_read_block*numSamples], &outBuffer[cur_write_block*numSamples], numSamples);
 #endif */
-    
     float samp;
     tCycleSetFreq(osc, (s1 * 800.0f + 100.0f));
     for (int cc=0; cc < numSamples; cc++)
     {
-        //outL[cc] = (s2 * 2.0f) * tSawtoothTick(osc);
-        samp = (s2 * 10.0f) * tCycleTick(osc);
+        //outL[cc] = (s2 * 2.0f) * tTriangleTick(osc);
+        samp = (s2 * 5.0f) * tCycleTick(osc);
+        //samp = tLockhartWavefolderTick(folder, samp);
         outL[cc] = tLockhartWavefolderTick(folder, samp);
         outR[cc] = outL[cc];
-        //DBG(outL[cc]);
+        count++;
     }
     /*
     cur_read_block++;

@@ -696,21 +696,22 @@ typedef struct _tAtkDtk
     float threshold;
 } tAtkDtk;
 
-#define THRESH 10e-10f
-#define LOCKHART_RL 7.5e3f
-#define LOCKHART_R 15e3f
-#define LOCKHART_VT 26e-3f
-#define LOCKHART_Is 10e-16f
-#define LOCKHART_A 2.0f*LOCKHART_RL/LOCKHART_R
-#define LOCKHART_B (LOCKHART_R+2.0f*LOCKHART_RL)/(LOCKHART_VT*LOCKHART_R)
+#define LOWER_THRESH 10e-10
+#define UPPER_THRESH 600.0
+#define LOCKHART_RL 7.5e3
+#define LOCKHART_R 15e3
+#define LOCKHART_VT 26e-3
+#define LOCKHART_Is 10e-16
+#define LOCKHART_A 2.0*LOCKHART_RL/LOCKHART_R
+#define LOCKHART_B (LOCKHART_R+2.0*LOCKHART_RL)/(LOCKHART_VT*LOCKHART_R)
 #define LOCKHART_D (LOCKHART_RL*LOCKHART_Is)/LOCKHART_VT
 #define VT_DIV_B LOCKHART_VT/LOCKHART_B
 
 typedef struct _tLockhartWavefolder
 {
-    float Ln1;
-    float Fn1;
-    float xn1;
+    double Ln1;
+    double Fn1;
+    double xn1;
     
     void (*sampleRateChanged)(struct _tLockhartWavefolder *self);
 } tLockhartWavefolder;

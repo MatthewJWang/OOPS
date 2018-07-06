@@ -2156,30 +2156,49 @@ tLockhartWavefolder* tLockhartWavefolderInit(void)
 {
     tLockhartWavefolder *w = &oops.tLockhartWavefolderRegistry[oops.registryIndex[T_LOCKHARTWAVEFOLDER]++];
     
-    w->Ln1 = 0.0f;
-    w->Fn1 = 0.0f;
-    w->xn1 = 0.0f;
+    w->Ln1 = 0.0;
+    w->Fn1 = 0.0;
+    w->xn1 = 0.0;
     
     return w;
 }
 
-float tLockhartWavefolderLambert(float x, float ln)
+double tLockhartWavefolderLambert(double x, double ln)
 {
-    float w = ln;
-    float expw, p, r, s, err;
+    double w = ln;
+    double expw, p, r, s, err, q;
     
     for (int i = 0; i < 100; i++)
     {
-        expw = expf(w);
+        //err = x * (logf(x) - logf(w));
         
-        p = w*expw - x;
-        r = (w+1.0f)*expw;
-        s = (w*2.0f)/(2.0f*(w+1.0f));
+        /*
+        r = logf(x / w) - w;
+        q = 2.0f * (1.0f+w) * (1.0f + w + 0.666666666f*r);
+        err = (r / (1.0f+w)) * ((q - r) / (q - 2*r));
+        
+        
+        */
+        if (w > UPPER_THRESH)
+        {
+            expw = exp(UPPER_THRESH);
+        }
+        else if (w < -UPPER_THRESH)
+        {
+            expw = exp(-UPPER_THRESH);
+        }
+        else expw = exp(w);
+        
+        p = (w * expw) - x;
+        r = (w + 1.0) * expw;
+        s = (w * 2.0) / (2.0 * (w + 1.0));
         err = (p/(r-(p*s)));
         
-        if (fabsf(err) < THRESH) break;
+        if (fabs(err) < LOWER_THRESH) break;
         
         w -= err;
+        //w = w * (1 + err);
+        //w = w - err;
     }
     
     return w;
@@ -2187,35 +2206,32 @@ float tLockhartWavefolderLambert(float x, float ln)
 
 float tLockhartWavefolderTick(tLockhartWavefolder* const w, float samp)
 {
-    if (samp > 1.0f)
-    {
-        samp = -samp;
-        samp = -samp;
-    }
     int l;
-    float u, Ln, Fn, xn, o;
+    double u, Ln, Fn, xn;
+    float o;
     
     // Compute Antiderivative
     if (samp > 0) l = 1;
     else if (samp < 0) l = -1;
     else l = 0;
-    u = LOCKHART_D * expf(l*LOCKHART_B*samp);
+    
+    u = LOCKHART_D * exp(l*LOCKHART_B*samp);
     Ln = tLockhartWavefolderLambert(u, w->Ln1);
-    Fn = (0.5f * VT_DIV_B) * (Ln*(Ln + 2.0f)) - 0.5f*LOCKHART_A*samp*samp;
+    Fn = (0.5 * VT_DIV_B) * (Ln*(Ln + 2.0)) - 0.5*LOCKHART_A*samp*samp;
     
     // Check for ill-conditioning
-    if (fabsf(samp-w->xn1)<THRESH)
+    if (fabs(samp - w->xn1) < LOWER_THRESH)
     {
         // Compute Averaged Wavefolder Output
-        xn = 0.5f*(samp+(w->xn1));
-        u = LOCKHART_D*expf(l*LOCKHART_B*xn);
+        xn = 0.5*(samp+w->xn1);
+        u = LOCKHART_D*exp(l*LOCKHART_B*xn);
         Ln = tLockhartWavefolderLambert(u, w->Ln1);
-        o = (l*LOCKHART_VT*Ln) - (LOCKHART_A*xn);
+        o = (float)(l*LOCKHART_VT*Ln) - (LOCKHART_A*xn);
     }
     else
     {
         // Apply AA Form
-        o = (Fn - w->Fn1)/(samp - w->xn1);
+        o = (float)(Fn - w->Fn1)/(samp - w->xn1);
     }
     
     // Update States
